@@ -6,22 +6,26 @@ const ProductTag = require('./ProductTag');
 
 // Products belongsTo Category
 Product.belongsTo(Category,{
-  foreignKey: ummmm
-})
+  foreignKey: 'category_id',
+  onDelete: "CASCADE"
+});
+
 // Categories have many Products
-Category.hadMany(Product{
-  foreignKey: uhhhhhh
+Category.hasMany(Product, {
+  foreignKey: 'category_id',
 })
 
 // Products belongToMany Tags (through ProductTag) what does
 // through ProductTag mean?
-Product.belongToMany(Tag{
-  foreignKey: ehhhhh
+Product.belongsToMany(Tag, {
+  through: ProductTag,
+  foreignKey: 'product_id',
 })
 
 // Tags belongToMany Products (through ProductTag)
-Tag belongToMany(Product{
-  foreignKey: emmmmmmm
+Tag.belongsToMany(Product, {
+  through: ProductTag,
+  foreignKey: 'tag_id',
 })
 
 module.exports = {
